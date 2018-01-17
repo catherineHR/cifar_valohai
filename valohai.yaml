@@ -3,7 +3,10 @@
 - step:
     name: Train model
     image: gcr.io/tensorflow/tensorflow:1.3.0-devel-gpu
-    command: python cifar10_train.py {parameters}
+    command: 
+      - mkdir cifar10_train
+      - python cifar10_train.py {parameters}
+      - ls cifar10_train
     parameters:
       - name: max_steps
         pass-as: --max_steps={v}
