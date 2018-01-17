@@ -23,14 +23,18 @@
 
 - step:
     name: Worker environment check
-    image: gcr.io/tensorflow/tensorflow:1.3.0-devel-gpu
+    image: gcr.io/tensorflow/tensor vflow:1.3.0-devel-gpu
     command:
       - pwd
       - ls -la
       - nvidia-smi
       - python --version
 - step:
-    name: Test model
+    name: Input test
     image: gcr.io/tensorflow/tensorflow:1.3.0-devel-gpu
     command: python cifar10_input_test.py {parameters}
-   
+
+- step:
+    name: Eval model
+    image: gcr.io/tensorflow/tensorflow:1.3.0-devel-gpu
+    command: python cifar10_eval.py {parameters}
